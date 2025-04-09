@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
@@ -11,6 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/slices/authSlice';
 import { RootState } from '../../redux/store';
+import CustomInput from '../../components/CustomInput';
 
 const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -34,21 +34,17 @@ const LoginScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
-      <TextInput
-        style={styles.input}
+      <CustomInput
         placeholder="Email"
-        placeholderTextColor='#000'
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
       />
-      <TextInput
-        style={styles.input}
+      <CustomInput
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
-        placeholderTextColor='#000'
         secureTextEntry
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
@@ -85,14 +81,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 30,
     textAlign: 'center',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 15,
-    fontSize: 16,
   },
   button: {
     backgroundColor: '#007AFF',
